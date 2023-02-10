@@ -186,12 +186,98 @@ def player_stats(name)
 end
 
 def big_shoe_rebounds
-  player_array = []
+  biggest_shoe = 0
+  rebounds = 0
   game_hash.each do |location, team_data|
     team_data[:players].each do |player|
-      player_array << player
+      if player[:shoe] > biggest_shoe
+        biggest_shoe = player[:shoe]
+        rebounds = player[:rebounds]
+      end
     end
   end
-  player_array.sort_by { |player| player[:shoe]}.reverse[0][:rebounds]
+  rebounds
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def num_points_scored(name)
+#   game_hash.each do |location, team_data|
+#     team_data[:players].each do |player|
+#       if player[:player_name] == name
+#         return player[:points]
+#       end
+#     end
+#   end
+# end
+
+# def shoe_size(name)
+#   game_hash.each do |location, team_data|
+#     team_data[:players].each do |player|
+#       if player[:player_name] == name
+#         return player[:shoe]
+#       end
+#     end
+#   end
+# end
+
+# def team_colors(team)
+#   game_hash.each do |location, team_data|
+#     if team_data[:team_name] == team
+#       return team_data[:colors]
+#     end
+#   end
+# end
+
+# def team_names
+#   names = []
+#   game_hash.each do |location, team_data|
+#     names << team_data[:team_name]
+#   end
+#   names
+# end
+
+# def player_numbers(team)
+#   numbers = []
+#   game_hash.each do |location, team_data|
+#     if team_data[:team_name] == team
+#       team_data[:players].each do |player|
+#         numbers << player[:number]
+#       end
+#     end
+#   end
+#   numbers
+# end
+
+# def player_stats(name)
+#   game_hash.each do |location, team_data|
+#     team_data[:players].each do |player|
+#       if player[:player_name] == name
+#         return player
+#       end
+#     end
+#   end
+# end
+
+# def big_shoe_rebounds
+#   player_array = []
+#   game_hash.each do |location, team_data|
+#     team_data[:players].each do |player|
+#       player_array << player
+#     end
+#   end
+#   player_array.sort_by { |player| player[:shoe]}.reverse[0][:rebounds]
+# end
 
